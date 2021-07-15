@@ -47,7 +47,7 @@ class PlayerTotals:
 
         team_df = (
             self.pbg.groupby(["player_id", "player_name"])
-            .agg({"team_abbrev": lambda x: "/".join(x.unique())})
+            .agg({"team_abbrev": lambda x: "/".join(x)})
             .reset_index()
         )
 
@@ -233,17 +233,29 @@ class PlayerTotals:
             return players
 
         players = list(
+            # set(
+            #     list(rapm_shifts["off_player_1_id"].unique())
+            #     + list(rapm_shifts["off_player_2_id"].unique())
+            #     + list(rapm_shifts["off_player_3_id"].unique())
+            #     + list(rapm_shifts["off_player_4_id"].unique())
+            #     + list(rapm_shifts["off_player_5_id"].unique())
+            #     + list(rapm_shifts["def_player_1_id"].unique())
+            #     + list(rapm_shifts["def_player_2_id"].unique())
+            #     + list(rapm_shifts["def_player_3_id"].unique())
+            #     + list(rapm_shifts["def_player_4_id"].unique())
+            #     + list(rapm_shifts["def_player_5_id"].unique())
+            # )
             set(
-                list(rapm_shifts["off_player_1_id"].unique())
-                + list(rapm_shifts["off_player_2_id"].unique())
-                + list(rapm_shifts["off_player_3_id"].unique())
-                + list(rapm_shifts["off_player_4_id"].unique())
-                + list(rapm_shifts["off_player_5_id"].unique())
-                + list(rapm_shifts["def_player_1_id"].unique())
-                + list(rapm_shifts["def_player_2_id"].unique())
-                + list(rapm_shifts["def_player_3_id"].unique())
-                + list(rapm_shifts["def_player_4_id"].unique())
-                + list(rapm_shifts["def_player_5_id"].unique())
+                list(rapm_shifts["off_player_1_id"])
+                + list(rapm_shifts["off_player_2_id"])
+                + list(rapm_shifts["off_player_3_id"])
+                + list(rapm_shifts["off_player_4_id"])
+                + list(rapm_shifts["off_player_5_id"])
+                + list(rapm_shifts["def_player_1_id"])
+                + list(rapm_shifts["def_player_2_id"])
+                + list(rapm_shifts["def_player_3_id"])
+                + list(rapm_shifts["def_player_4_id"])
+                + list(rapm_shifts["def_player_5_id"])
             )
         )
 
